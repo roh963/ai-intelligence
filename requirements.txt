@@ -1,0 +1,33 @@
+#utilites
+
+numpy
+pandas
+
+# FACE RECOGNITION
+scikit-learn
+matplotlib
+seaborn
+
+
+# DLIB  face detection 
+dlib-bin
+# dlib-19.24.1-cp311-cp311-win_amd64.whl  if dlib not working then you best option is to install dlib from wheel file. you can download it from here https://pypi.org/project/dlib/#files and then install it using pip install dlib-19.24.1-cp311-cp311-win_amd64.whl
+
+
+
+# face recognition model
+git+https://github.com/ageitgey/face_recognition_models
+setuptools<70.0.0 # to avoid error with face_recognition_models
+
+#database 
+supabase
+bcrypt
+
+# segno for QR code generation
+segno
+
+# for image processing
+pillow 
+
+#streamlit for web app
+streamlit
