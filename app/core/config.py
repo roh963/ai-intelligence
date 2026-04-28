@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     # App info
     APP_NAME: str = "Attendance System"
     DEBUG: bool = False
-    FRONTEND_URL: str = "http://localhost:3000"
+    FRONTEND_URL: str
 
     # Database - Supabase PostgreSQL connection string
     DATABASE_URL: str

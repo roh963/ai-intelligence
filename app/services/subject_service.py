@@ -81,6 +81,12 @@ def delete_subject(db: Session, subject_id: int, teacher_id: int) -> None:
     if subject.teacher_id != teacher_id:
         raise HTTPException(status_code=403, detail="Not your subject")
     try:
+        # Pehle manually children delete karo
+        from sqlalchemy import delete as sql_delete
+        from app.models.models import SubjectStudent, AttendanceLog
+
+        db.execute(sql_delete(AttendanceLog).where(AttendanceLog.subject_id == subject_id))
+        db.execute(sql_delete(SubjectStudent).where(SubjectStudent.subject_id == subject_id))
         db.delete(subject)
         db.commit()
     except SQLAlchemyError as e:
