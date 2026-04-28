@@ -1,6 +1,5 @@
 FROM python:3.11-slim
 
-# System dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
@@ -14,16 +13,15 @@ RUN apt-get update && apt-get install -y \
     libxext6 \
     libgl1 \
     curl \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
-# uv install
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 WORKDIR /app
 
 COPY requirements.txt .
 
-# uv se install — pip se kaafi fast
 RUN uv pip install --system --no-cache -r requirements.txt
 
 COPY . .
