@@ -1,5 +1,4 @@
-#utilites
-
+#utilities
 numpy
 pandas
 
@@ -8,16 +7,14 @@ scikit-learn
 matplotlib
 seaborn
 
-
-# DLIB  face detection 
+# DLIB face detection 
 dlib-bin
-# dlib-19.24.1-cp311-cp311-win_amd64.whl  if dlib not working then you best option is to install dlib from wheel file. you can download it from here https://pypi.org/project/dlib/#files and then install it using pip install dlib-19.24.1-cp311-cp311-win_amd64.whl
 
-
+# dlib-19.24.1-cp311-cp311-win_amd64.whl
 
 # face recognition model
 git+https://github.com/ageitgey/face_recognition_models
-setuptools<70.0.0 # to avoid error with face_recognition_models
+setuptools<70.0.0
 
 #database 
 supabase
@@ -29,5 +26,33 @@ segno
 # for image processing
 pillow 
 
-#streamlit for web app
+# Core API
+fastapi
+uvicorn[standard]
+ 
+# Database ORM
+sqlalchemy
+psycopg2-binary
+alembic
+ 
+# Config & Validation
+pydantic
+pydantic-settings
+python-dotenv
+ 
+# Auth
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+ 
+# HTTP client
+httpx
 streamlit
+
+#voice 
+librosa 
+resemblyzer
+
+opencv-python
+
+pydub
