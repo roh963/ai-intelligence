@@ -14,8 +14,8 @@ from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.services.helper_service import get_all_students, create_student
-from pipelines.face_pipeline import predict_attendace, get_face_embeddings, train_classifier
-from pipelines.voice_pipeline import get_voice_embedding
+from app.pipelines.face_pipeline import predict_attendace, get_face_embeddings, train_classifier
+from app.pipelines.voice_pipeline import get_voice_embedding
 
 
 # ── Image Decoder ─────────────────────────────────────────────────────────────
