@@ -1,4 +1,68 @@
-#utilities
+    # #utilities
+    # numpy
+    # pandas
+
+    # # FACE RECOGNITION
+    # scikit-learn
+    # matplotlib
+    # seaborn
+
+    # # DLIB face detection 
+    # dlib-bin
+
+    # # dlib-19.24.1-cp311-cp311-win_amd64.whl
+
+    # # face recognition model
+    # # git+https://github.com/ageitgey/face_recognition_models
+
+    # face-recognition-models
+
+    # setuptools<70.0.0
+
+    # #database 
+    # supabase
+    # bcrypt
+
+    # # segno for QR code generation
+    # segno
+
+    # # for image processing
+    # pillow 
+
+    # # Core API
+    # fastapi
+    # uvicorn[standard]
+    
+    # # Database ORM
+    # sqlalchemy
+    # psycopg2-binary
+    # alembic
+    
+    # # Config & Validation
+    # pydantic
+    # pydantic-settings
+    # python-dotenv
+    
+    # # Auth
+    # python-jose[cryptography]
+    # passlib[bcrypt]
+    # python-multipart
+    
+    # # HTTP client
+    # httpx
+    # streamlit
+
+    # #voice 
+    # librosa 
+    # resemblyzer
+
+    # opencv-python
+
+    # pydub
+
+
+
+    # utilities
 numpy
 pandas
 
@@ -7,55 +71,48 @@ scikit-learn
 matplotlib
 seaborn
 
-# DLIB face detection 
+# DLIB — prebuilt binary (cmake compile nahi karna padega, fast install)
 dlib-bin
 
-# dlib-19.24.1-cp311-cp311-win_amd64.whl
-
-# face recognition model
-# git+https://github.com/ageitgey/face_recognition_models
-
-face-recognition-models
+# face recognition models — GitHub se directly
+git+https://github.com/ageitgey/face_recognition_models
 
 setuptools<70.0.0
 
-#database 
-supabase
+# database
 bcrypt
 
-# segno for QR code generation
+# QR code
 segno
 
-# for image processing
-pillow 
+# image processing
+pillow
 
 # Core API
 fastapi
 uvicorn[standard]
- 
+
 # Database ORM
 sqlalchemy
 psycopg2-binary
 alembic
- 
+
 # Config & Validation
 pydantic
 pydantic-settings
 python-dotenv
- 
+
 # Auth
 python-jose[cryptography]
 passlib[bcrypt]
 python-multipart
- 
+
 # HTTP client
 httpx
-streamlit
 
-#voice 
-librosa 
+# voice
+librosa
 resemblyzer
 
 opencv-python
-
 pydub

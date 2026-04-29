@@ -1,5 +1,9 @@
 FROM python:3.11-slim
 
+RUN useradd -m -u 1000 user
+ENV HOME=/home/user \
+    PATH=/home/user/.local/bin:$PATH
+
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
@@ -18,14 +22,16 @@ RUN apt-get update && apt-get install -y \
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
-WORKDIR /app
+WORKDIR /home/user/app
 
 COPY requirements.txt .
 
 RUN uv pip install --system --no-cache -r requirements.txt
 
-COPY . .
+COPY --chown=user . .
 
-EXPOSE 8000
+EXPOSE 7860
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+USER user
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "7860"]
