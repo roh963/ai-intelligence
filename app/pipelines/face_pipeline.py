@@ -84,8 +84,14 @@ def load_dlib_models():
 def get_face_embeddings(image_np):
     # np.require — dlib ke liye guaranteed safe array
     img = np.require(image_np, dtype=np.uint8, requirements=['C', 'O', 'W'])
-
-    print("image the np array",img)
+    h, w = img.shape[:2]
+    if w > 640:
+        scale = 640 / w
+        new_w = 640
+        new_h = int(h * scale)
+        import cv2
+        img = cv2.resize(img, (new_w, new_h), interpolation=cv2.INTER_LINEAR)
+        img = np.require(img, dtype=np.uint8, requirements=['C', 'O', 'W'])
     
     detector, sp, facereconize = load_dlib_models()
 

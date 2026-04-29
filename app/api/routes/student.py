@@ -1,3 +1,4 @@
+import asyncio
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from sqlalchemy import select
@@ -14,24 +15,30 @@ router = APIRouter(prefix="/student", tags=["Student"])
 
 
 @router.post("/login")
-def student_login(req: StudentLoginRequest):
+async def student_login(req: StudentLoginRequest):
     """
     Face se student login.
-    Returns: found/not found + student info or message
+    dlib CPU-heavy hai — thread pool mein run karo taaki server block na ho.
     """
-    return handle_student_login(req.image_b64)
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(None, handle_student_login, req.image_b64)
 
 
 @router.post("/create", status_code=201)
-def create_student_profile(req: StudentCreateRequest, db: Session = Depends(get_db)):
+async def create_student_profile(req: StudentCreateRequest, db: Session = Depends(get_db)):
     """
     Naya student register karo — face + optional voice embedding.
+    dlib + voice processing thread mein chalao.
     """
-    return handle_create_student(
-        db=db,
-        name=req.name,
-        image_b64=req.image_b64,
-        audio_b64=req.audio_b64,
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(
+        None,
+        lambda: handle_create_student(
+            db=db,
+            name=req.name,
+            image_b64=req.image_b64,
+            audio_b64=req.audio_b64,
+        )
     )
 
 
